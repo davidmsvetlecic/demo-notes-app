@@ -3,8 +3,6 @@ import { Table } from "sst/node/table";
 import handler from "@notes/core/handler";
 import dynamoDb from "@notes/core/dynamodb";
 
-// const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
 export const main = handler(async (event) => {
     let data = { content: '', attachment: '' };
 
@@ -16,7 +14,7 @@ export const main = handler(async (event) => {
         TableName: Table.Notes.tableName,
         Item: {
             // The attributes of the item to be created
-            userId: "123",  // The id of the author
+            userId: event.requestContext.authorizer?.iam.cognitoIdentity.identityId,  // The id of the author
             noteId: uuid.v1(), // A unique uuid
             content: data.content, // Parsed from the request body
             attachment: data.attachment, // Parsed from the request body
@@ -27,5 +25,4 @@ export const main = handler(async (event) => {
     await dynamoDb.put(params)
 
     return JSON.stringify(params.Item)
-
 })

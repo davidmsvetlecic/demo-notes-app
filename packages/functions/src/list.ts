@@ -11,7 +11,7 @@ export const main = handler(async (event) => {
         KeyConditionExpression: "userId = :userId",
         // 'ExpressionAttributeValues' defines the value in the condition
         // - ':userId': defines 'userId'to be th id of the author
-        ExpressionAttributeValues: { ":userId": "123" }
+        ExpressionAttributeValues: { ":userId": event.requestContext.authorizer?.iam.cognitoIdentity.identityId, }
     }
 
     const result = await dynamoDb.query(params)
