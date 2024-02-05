@@ -1,0 +1,1 @@
+export const calculateCost = (storage: number) => storage <= 10 ? 4 : storage <= 100 ? 2 : 1 * storage * 100
