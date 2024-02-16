@@ -10,10 +10,10 @@ export function ApiStack({ stack }: StackContext) {
         defaults: {
             authorizer: "iam",
             function: {
+                timeout: 30,
                 bind: [table, STRIPE_SECRET_KEY]
             }
         },
-        cors: true,
         routes: {
             "POST /notes": "packages/functions/src/create.main",
             "GET /notes": "packages/functions/src/list.main",
