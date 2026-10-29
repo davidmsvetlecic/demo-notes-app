@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@9.4.0",
   "scripts": {
     "dev": "sst dev",
     "build": "sst build",
@@ -13,12 +14,13 @@
     "test": "sst bind vitest run"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.2",
-    "aws-cdk-lib": "2.110.1",
+    "@tsconfig/node18": "^18.2.7",
+    "@types/node": "^20.11.19",
+    "aws-cdk-lib": "2.124.0",
     "constructs": "10.3.0",
-    "sst": "^2.40.3",
-    "typescript": "^5.3.3",
-    "vitest": "^1.2.2"
+    "sst": "^2.49.8",
+    "typescript": "^5.9.3",
+    "vitest": "^1.6.1"
   },
   "workspaces": [
     "packages/*"
